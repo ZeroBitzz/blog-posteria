@@ -1,0 +1,41 @@
+<main class="form-signin w-100 m-auto">
+  <form action="/signup" method="post">
+    <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+
+    <div class="form-floating">
+      <input required type="text" class="form-control" id="username" name="username" placeholder="Username">
+      <label for="username">Username</label>
+    </div>
+
+    <div class="form-floating">
+      <input required type="password" class="form-control" id="password" name="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
+
+    <div class="form-floating">
+      <input required type="password" class="form-control" id="reenteredpassword" name="reenteredpassword" placeholder="Reenter Password">
+      <label for="reenteredpassword">Reenter Password</label>
+    </div>
+
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+  </form>
+</main>
+
+<script>
+  const password = document.getElementById("password")
+  const reenterPassword = document.getElementById("reenteredpassword")
+
+  function validatePassword(){
+    if(password.value != reenterPassword.value) {
+      reenterPassword.setCustomValidity("Passwords Don't Match");
+    } else {
+      reenterPassword.setCustomValidity('');
+    }
+  }
+
+  password.onchange = validatePassword;
+  reenterPassword.onkeyup = validatePassword;
+</script>

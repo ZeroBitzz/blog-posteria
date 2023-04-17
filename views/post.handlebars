@@ -1,0 +1,52 @@
+<h1>{{post.title}}</h1>
+<div class="container">
+  <div class="card m-2">
+    <div class="card-body">
+      <div class="row post-title">
+        <div class="col">
+          <p class="card-text">Created at: {{createdAt}}</p>
+        </div>
+        <div class="col">
+          <p class="card-text">By: {{post.author}}</p>
+        </div>
+      </div>
+      <hr>
+      <p class="card-text">{{post.body}}</p>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<h3 class="h3 mb-3 fw-normal">Comments</h3>
+{{#if comments}}
+{{#each comments}}
+<div class="container">
+  <div class="card m-2">
+    <div class="card-body">
+      <p class="card-text"><i>"{{comment}}"</i></p>
+      <p><strong>- {{author}}</strong></p>
+    </div>
+  </div>
+</div>
+{{/each}}
+{{else}}
+<div class="container card">
+  <p class="p-5">There are no comments for this post.</p>
+</div>
+{{/if}}
+
+{{#if isLoggedIn}}
+<br><br>
+<h4>Add a comment</h4>
+<form action="/create-comment" method="post">
+
+  <div class="form-group m-1">
+    <textarea required class="form-control" class="form-control" id="comment" name="comment" placeholder="Comment"
+      rows="5"></textarea>
+  </div>
+
+  <input type="hidden" id="postId" name="postId" value="{{post.id}}" />
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Create post</button>
+
+</form>
+{{/if}}

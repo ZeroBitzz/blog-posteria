@@ -1,0 +1,23 @@
+{{#if posts}}
+{{#each posts}}
+<div class="container">
+  <div class="card m-2">
+    <div class="card-body">
+      <div class="row post-title">
+        <div class="col">
+          <h5 class="card-title"><a href='/posts/{{id}}'>{{title}}</a></h5>
+        </div>
+        <div class="col">
+          <p class="card-text">By: {{author}}</p>
+        </div>
+      </div>
+      <p class="card-text">{{body}}</p>
+    </div>
+  </div>
+</div>
+{{/each}}
+{{else}}
+<div class="container card">
+  <p class="p-5">No posts yet.</p>
+</div>
+{{/if}}
